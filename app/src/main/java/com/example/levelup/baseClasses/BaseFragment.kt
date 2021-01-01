@@ -10,6 +10,11 @@ open class BaseFragment: Fragment() {
         return requiredActivity.loadingObserver
     }
 
+    fun getErrorObserver():Observer<Any?>{
+        val requiredActivity = requireActivity() as BaseActivity
+        return requiredActivity.errorObserver
+    }
+
     fun String.showToast() {
         (activity as? BaseActivity)?.showToast(this)
     }

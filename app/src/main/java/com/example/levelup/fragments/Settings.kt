@@ -33,6 +33,7 @@ class Settings : BaseFragment(),LogoutDialog.LogoutDialogListner {
         binding = FragmentSettingsBinding.inflate(inflater, container, false)
         binding?.listnerHandler = this
         viewmodel.isLoading.observe(requiredActivity,getLoadingObserver())
+        viewmodel.errorObserver.observe(requiredActivity,getErrorObserver())
         logoutObserver()
         return binding!!.root
     }

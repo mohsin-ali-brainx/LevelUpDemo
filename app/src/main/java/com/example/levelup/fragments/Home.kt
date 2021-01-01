@@ -35,6 +35,7 @@ class Home : BaseFragment() {
                 .get(HomeViewModel::class.java)
         binding!!.menuRecyclerView.adapter
         viewmodel.isLoading.observe(requiredActivity,getLoadingObserver())
+        viewmodel.errorObserver.observe(requiredActivity,getErrorObserver())
         setBinding()
 
         return binding!!.root

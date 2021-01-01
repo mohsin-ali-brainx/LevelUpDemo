@@ -83,6 +83,10 @@ open class BaseActivity:AppCompatActivity(),NetworkStateReciver.NetworkStateRece
         }
     }
 
+    public val errorObserver = Observer<Any?> {
+        showToast(it)
+    }
+
     fun showToast(message: Any?) {
         val messageString = when (message) {
             is String -> message

@@ -29,6 +29,7 @@ class UpdatePassword : BaseActivity(),UpdatePasswordDialog.UpdatePasswordDialogL
         binding.viewModel = viewmodel
         setContentView(binding.root)
         viewmodel.isLoading.observe(this,loadingObserver)
+        viewmodel.errorObserver.observe(this,errorObserver)
     }
 
     fun UpdateClicked(view: View) {

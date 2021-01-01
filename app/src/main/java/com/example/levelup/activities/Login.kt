@@ -30,6 +30,7 @@ class Login : BaseActivity() {
         binding.viewModel = viewmodel
         setContentView(binding.root)
         viewmodel.isLoading.observe(this,loadingObserver)
+        viewmodel.errorObserver.observe(this,errorObserver)
 
     }
 
