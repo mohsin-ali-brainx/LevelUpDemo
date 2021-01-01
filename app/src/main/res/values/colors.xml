@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="theme_color">#FF2573D5</color>
+    <color name="theme_color_light">#FF1F69FF</color>
+    <color name="theme_color_dark">#FF002168</color>
+    <color name="grey">#0000005C</color>
+    <color name="light_grey">#FFD4DAE4</color>
+    <color name="light_grey_100">#1A6CE129</color>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="unselected_circle">#FFC9D9E6</color>
+    <color name="grey_text_color">#FF5D687E</color>
+    <color name="dark_blue_text_color">#FF19304D</color>
+    <color name="red_color">#FFFF3B30</color>
+    <color name="blue_text_color">#FF29304D</color>
+    <color name="transparent">#00000000</color>
+    <color name="background_fragment_color">#EFF2F9</color>
+    <color name="background_quote_color">#FF007AFF</color>
+    <color name="light_grey_border_color">#F2F2F280</color>
+    <color name="black_text_color">#FF29304D</color>
+    <color name="progress_bg_color">#99000000</color>
+</resources>

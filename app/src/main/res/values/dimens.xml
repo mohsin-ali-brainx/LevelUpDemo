@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="activity_margin_top">8dp</dimen>
+    <dimen name="activity_margin_horizontal">8dp</dimen>
+    <dimen name="activity_margin1_top">20dp</dimen>
+    <dimen name="activity_margin_top_32">32dp</dimen>
+    <dimen name="activity_vertical_bottom">20dp</dimen>
+    <dimen name="activity_vertical_bottom_32">32dp</dimen>
+    <dimen name="activity_margin_start">32dp</dimen>
+    <dimen name="activity_margin1_start">20dp</dimen>
+    <dimen name="activity_vertical_end">20dp</dimen>
+    <dimen name="activity_horizontal_end_48">48dp</dimen>
+    <dimen name="activity_margin_bottom">16dp</dimen>
+    <dimen name="activity_margin_top_748">48dp</dimen>
+    <dimen name="padding_8">8dp</dimen>
+    <dimen name="padding_16">8dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="padding">24dp</dimen>
+    <dimen name="logo_top_margin">72dp</dimen>
+    <dimen name="title_top_margin">48dp</dimen>
+
+    <dimen name="font_8sp">8sp</dimen>
+    <dimen name="extra_small">10sp</dimen>
+    <dimen name="font_small">12sp</dimen>
+    <dimen name="font_small_14">14sp</dimen>
+    <dimen name="font_11sp">11sp</dimen>
+    <dimen name="font_medium_small">14sp</dimen>
+    <dimen name="font_medium">16sp</dimen>
+    <dimen name="font_large">18sp</dimen>
+    <dimen name="font_medium_large">20sp</dimen>
+    <dimen name="font_x_large">21sp</dimen>
+    <dimen name="font_22">22sp</dimen>
+    <dimen name="font_xx_large">24sp</dimen>
+    <dimen name="font_xxx_large">27sp</dimen>
+    <dimen name="font_xxxx_large">30sp</dimen>
+    <dimen name="font_38sp">38sp</dimen>
+    <dimen name="font_80sp">80sp</dimen>
+    <dimen name="font_100sp">150sp</dimen>
+
+    <dimen name="edit_text_view_height">52dp</dimen>
+    <dimen name="edit_text_view_height_42dp">42dp</dimen>
+    <dimen name="edit_text_margin_top_12">12dp</dimen>
+    <dimen name="edit_text_margin_top">52dp</dimen>
+    <dimen name="edit_text_margin_start">24dp</dimen>
+    <dimen name="edit_text_margin_end">24dp</dimen>
+    <dimen name="edit_text_padding">16dp</dimen>
+    <dimen name="edit_text_padding_horizontal">20dp</dimen>
+    <dimen name="edit_drawable_padding">16dp</dimen>
+
+    <dimen name="button_verticle_padding">12dp</dimen>
+
+    <dimen name="edittext_corner">16dp</dimen>
+    <dimen name="button_corner">8dp</dimen>
+    <dimen name="card_corner">12dp</dimen>
+    <dimen name="elevation">4dp</dimen>
+
+</resources>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <import type="com.example.levelup.models.Menu"/>
+        <import type="android.view.View"/>
+        <variable
+            name="menu"
+            type="Menu" />
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin_8"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="@dimen/padding_16"
+        app:cardCornerRadius="@dimen/card_corner"
+        style="@style/CardTheme"
+        android:elevation="@dimen/elevation"
+        android:background="@color/white"
+        >
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+            <ImageView
+                android:id="@+id/iv_menuIcon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_margin1_start"
+                android:layout_marginTop="@dimen/activity_margin1_top"
+                app:imageFile="@{menu.image}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/ic_do_today" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text='@{menu.title , default="Do Today"}'
+                android:fontFamily="@font/ubuntu_medium"
+                android:textSize="@dimen/font_medium"
+                android:textAlignment="textStart"
+                android:textColor="@color/black_text_color"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginBottom="@dimen/activity_vertical_bottom"
+                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_marginStart="@dimen/activity_margin1_start"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/iv_menuIcon" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
