@@ -5,6 +5,8 @@ import android.graphics.ColorFilter
 import android.graphics.PorterDuff
 import android.graphics.PorterDuffColorFilter
 import androidx.core.content.ContextCompat
+import com.example.levelup.models.ErrorBody
+import com.google.gson.Gson
 
 object LevelUpUtils {
 
@@ -17,4 +19,17 @@ object LevelUpUtils {
             ), PorterDuff.Mode.SRC_ATOP
         )
     }
+
+
+    fun jsonConversion(errorBody: String?, defaultError: String = "Server Error."): String {
+        try {
+            return Gson().fromJson(
+                errorBody,
+                ErrorBody::class.java
+            ).error ?: defaultError
+        } catch (e: Exception) {
+            return defaultError
+        }
+    }
+
 }

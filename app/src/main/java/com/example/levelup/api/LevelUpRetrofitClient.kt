@@ -1,3 +1,5 @@
+@file:Suppress("ControlFlowWithEmptyBody")
+
 package com.example.levelup.api
 
 import com.example.levelup.utils.ApiConstants
@@ -20,10 +22,6 @@ object LevelUpRetrofitClient {
             httpClient.addInterceptor { chain ->
                 val request = chain.request()
                 val response = chain.proceed(request)
-                if (response.code() == 401) {
-//                    EventBus.getDefault().post(SessionEvent(true))
-//                    CustomCallback.canceled = true
-                }
                 response
             }
                     .connectTimeout(10, TimeUnit.SECONDS)
@@ -40,7 +38,6 @@ object LevelUpRetrofitClient {
                     .addConverterFactory(
                             GsonConverterFactory.create(
                                     GsonBuilder()
-                                            //.excludeFieldsWithoutExposeAnnotation()
                                             .create()
                             )
                     )

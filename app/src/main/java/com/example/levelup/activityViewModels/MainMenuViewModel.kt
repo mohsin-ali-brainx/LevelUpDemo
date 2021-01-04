@@ -4,9 +4,10 @@ import android.app.Application
 import androidx.fragment.app.Fragment
 import com.example.levelup.R
 import com.example.levelup.baseClasses.BaseViewModel
-import com.example.levelup.fragments.Home
-import com.example.levelup.fragments.Notifications
-import com.example.levelup.fragments.Settings
+import com.example.levelup.fragments.HomeFragment
+import com.example.levelup.fragments.NotificationsFragment
+import com.example.levelup.fragments.SettingsFragment
+import com.example.levelup.utils.LevelUpConstants
 
 class MainMenuViewModel(application: Application): BaseViewModel(application) {
     private var fragmentList: MutableList<Fragment> = mutableListOf()
@@ -14,20 +15,20 @@ class MainMenuViewModel(application: Application): BaseViewModel(application) {
     private val tabIcons: MutableList<Int> = mutableListOf()
 
     var textColor:Int = R.color.black_text_color
-    var iconColor:Int = R.color.theme_color
+    private var iconColor:Int = R.color.theme_color
 
     init {
-        fragmentList.add(Home())
-        fragmentList.add(Notifications())
-        fragmentList.add(Settings())
+        fragmentList.add(HomeFragment())
+        fragmentList.add(NotificationsFragment())
+        fragmentList.add(SettingsFragment())
 
         tabIcons.add(R.drawable.ic_home_inactive)
         tabIcons.add(R.drawable.ic_notification_inactive)
         tabIcons.add(R.drawable.ic_settings_inactive)
 
-        tabTitles.add("Home")
-        tabTitles.add("Notification")
-        tabTitles.add("Settings")
+        tabTitles.add(LevelUpConstants.BOTTOM_NAV_ITEM_HOME)
+        tabTitles.add(LevelUpConstants.BOTTOM_NAV_ITEM_NOTIFICATION)
+        tabTitles.add(LevelUpConstants.BOTTOM_NAV_ITEM_SETTINGS)
     }
 
     fun changeSelectedTabColor(){

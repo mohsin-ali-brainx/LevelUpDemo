@@ -5,18 +5,18 @@
 
     <data>
 
-        <import type="com.example.levelup.fragments.Settings"/>
+        <import type="com.example.levelup.fragments.SettingsFragment"/>
 
         <variable
             name="listnerHandler"
-            type="Settings" />
+            type="SettingsFragment" />
 
     </data>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".fragments.Settings"
+        tools:context=".fragments.SettingsFragment"
 
         >
 

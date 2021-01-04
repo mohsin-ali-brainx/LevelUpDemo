@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AlertDialog
 import com.example.levelup.databinding.DialogLogoutBinding
 
-class LogoutDialog() : LevelUpDialogUtils() {
+class LogoutDialog : LevelUpDialogUtils() {
 
     private val TAG = "MyCustomDialog"
 
@@ -23,6 +23,7 @@ class LogoutDialog() : LevelUpDialogUtils() {
     }
 
     private fun clickEvents() {
+
         binding?.btnCancel?.setOnClickListener{
             listner.isLogoutClicked(false)
             dismiss()

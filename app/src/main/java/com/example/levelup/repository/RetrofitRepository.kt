@@ -3,6 +3,8 @@ package com.example.levelup.repository
 import com.example.levelup.interfaces.IResponse
 import com.example.levelup.models.*
 import com.example.levelup.utils.LevelUpApiUtils
+import com.example.levelup.utils.LevelUpConstants
+import com.example.levelup.utils.LevelUpUtils
 
 class RetrofitRepository{
     private val apiService = LevelUpApiUtils.levelUpApi
@@ -15,19 +17,19 @@ class RetrofitRepository{
                 listener.onSuccess(response.body()!!)
             }
             else {
-                listener.onFailure("Empty body")
+                listener.onFailure(LevelUpConstants.EMPTY_BODY)
             }
 
         }else{
-            listener.onFailure(response.errorBody().toString())
+            listener.onFailure(LevelUpUtils.jsonConversion(response.errorBody()?.string()))
         }
     }
 
-    suspend fun signInUser(header:String, user: User, listener: IResponse<SignedInUser, String>){
-        val response =apiService.signIn(header,user)
+    suspend fun signInUser( user: User, listener: IResponse<SignedInUser, String>){
+        val response =apiService.signIn(LevelUpConstants.CONTENT_TYPE,user)
         if (response.isSuccessful){
             if (response.body()!=null){
-                var logedInUser = response.body()
+                val logedInUser = response.body()
                 logedInUser?.apply {
                     client = response.headers().get("client")
                     access_token = response.headers().get("access-token")
@@ -35,11 +37,11 @@ class RetrofitRepository{
                 listener.onSuccess(logedInUser!!)
             }
             else {
-                listener.onFailure("Empty body")
+                listener.onFailure(LevelUpConstants.EMPTY_BODY)
             }
 
         }else{
-            listener.onFailure(response.errorBody().toString())
+            listener.onFailure(LevelUpUtils.jsonConversion(response.errorBody()?.string()))
         }
     }
 
@@ -47,15 +49,15 @@ class RetrofitRepository{
         val response =apiService.firstTimePasswordChange(header, user)
         if (response.isSuccessful){
             if (response.body()!=null){
-                var updatePassword = response.body()
+                val updatePassword = response.body()
                 listener.onSuccess(updatePassword!!)
             }
             else {
-                listener.onFailure("Empty body")
+                listener.onFailure(LevelUpConstants.EMPTY_BODY)
             }
 
         }else{
-            listener.onFailure(response.errorBody().toString())
+            listener.onFailure(LevelUpUtils.jsonConversion(response.errorBody()?.string()))
         }
     }
 
@@ -65,15 +67,15 @@ class RetrofitRepository{
         )
         if (response.isSuccessful){
             if (response.body()!=null){
-                var updatePassword = response.body()
+                val updatePassword = response.body()
                 listener.onSuccess(updatePassword!!)
             }
             else {
-                listener.onFailure("Empty body")
+                listener.onFailure(LevelUpConstants.EMPTY_BODY)
             }
 
         }else{
-            listener.onFailure(response.errorBody().toString())
+            listener.onFailure(LevelUpUtils.jsonConversion(response.errorBody()?.string()))
         }
     }
 

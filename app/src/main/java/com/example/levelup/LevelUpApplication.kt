@@ -9,7 +9,7 @@ class LevelUpApplication : Application() {
 
     companion object{
         private lateinit var mApp:LevelUpApplication
-        var isInternetConnected = true;
+        var isInternetConnected = true
         fun getApplication(): LevelUpApplication = mApp
         fun getTmContext(): Context = mApp.applicationContext
     }

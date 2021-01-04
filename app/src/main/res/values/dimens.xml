@@ -18,6 +18,7 @@
     <dimen name="margin_8">8dp</dimen>
     <dimen name="padding">24dp</dimen>
     <dimen name="logo_top_margin">72dp</dimen>
+    <dimen name="horizontal_margin">60dp</dimen>
     <dimen name="title_top_margin">48dp</dimen>
 
     <dimen name="font_8sp">8sp</dimen>
@@ -54,5 +55,7 @@
     <dimen name="button_corner">8dp</dimen>
     <dimen name="card_corner">12dp</dimen>
     <dimen name="elevation">4dp</dimen>
+    <dimen name="divider_height">3dp</dimen>
+    <dimen name="image_size">60dp</dimen>
 
 </resources>

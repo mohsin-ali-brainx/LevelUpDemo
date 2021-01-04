@@ -10,7 +10,7 @@ open class BaseViewModel(application:Application):AndroidViewModel(application) 
 
 
     val isLoading = MutableLiveData<Boolean>()
-    val errorObserver = MutableLiveData<Any?>()
+    val errorMessageObserver = MutableLiveData<Any?>()
 
     companion object{
        lateinit var dataStoreRepository : DataStoreRepository
@@ -26,5 +26,7 @@ open class BaseViewModel(application:Application):AndroidViewModel(application) 
 
     fun hideProcessingLoader() = isLoading.postValue(false)
 
-    fun showToast(content: Any?=null) = errorObserver.postValue(content)
+    fun showToast(content: Any?=null) = errorMessageObserver.postValue(content)
+
+    fun showErrorDialog(content: Any?=null) = errorMessageObserver.postValue(content)
 }

@@ -19,6 +19,11 @@ open class BaseFragment: Fragment() {
         (activity as? BaseActivity)?.showToast(this)
     }
 
+    fun String.errorDialog() {
+        (activity as? BaseActivity)?.showErrorDialog(this)
+    }
+
+
     fun hideLoading(){
         (activity as? BaseActivity)?.hideProcessingDialog()
     }

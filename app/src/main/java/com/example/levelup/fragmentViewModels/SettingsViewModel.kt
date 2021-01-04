@@ -28,14 +28,14 @@ class SettingsViewModel(application: Application) : BaseViewModel(application) {
 
     private val logoutListener = object : IResponse<UserSignout, String> {
         override fun onSuccess(result: UserSignout) {
-            //hideProcessingLoader()
+            hideProcessingLoader()
             logout.postValue(true)
 
         }
 
         override fun onFailure(error: String) {
-           // hideProcessingLoader()
-            showToast(error)
+            hideProcessingLoader()
+            showErrorDialog(error)
         }
 
     }

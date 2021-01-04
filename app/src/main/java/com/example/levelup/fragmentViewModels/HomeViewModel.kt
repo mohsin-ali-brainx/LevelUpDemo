@@ -9,25 +9,21 @@ import com.example.levelup.baseClasses.BaseViewModel
 import com.example.levelup.interfaces.IResponse
 import com.example.levelup.models.Menu
 import com.example.levelup.models.RandomQuote
+import com.example.levelup.utils.LevelUpConstants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 class HomeViewModel(application: Application) : BaseViewModel(application) {
 
-    private var menuList : List<Menu>
+    private var menuList : List<Menu> = listOf(
+            Menu(LevelUpConstants.HOME_MENU_ITEM_DO_TODAY,  R.drawable.ic_do_today),
+            Menu(LevelUpConstants.HOME_MENU_ITEM_TIPS,  R.drawable.ic_tips),
+            Menu(LevelUpConstants.HOME_MENU_ITEM_TRACK_IT,  R.drawable.ic_track),
+            Menu(LevelUpConstants.HOME_MENU_ITEM_PLAN,  R.drawable.ic_plan),
+            Menu(LevelUpConstants.HOME_MENU_ITEM_TRAINING,  R.drawable.ic_training),
+            Menu(LevelUpConstants.HOME_MENU_ITEM_SHARE,  R.drawable.ic_share)
+    )
     var quote : MutableLiveData<RandomQuote> = MutableLiveData()
-//    var user : MutableLiveData<SignedInUser> = MutableLiveData()
-
-    init {
-        menuList = listOf(
-                Menu("Do Today",  R.drawable.ic_do_today),
-                Menu("Activities & Tips",  R.drawable.ic_tips),
-                Menu("Track It",  R.drawable.ic_track),
-                Menu("Plan",  R.drawable.ic_plan),
-                Menu("Training",  R.drawable.ic_training),
-                Menu("Say & Share",  R.drawable.ic_share)
-        )
-    }
 
     fun  getMenuList(): List<Menu> {
         return menuList
@@ -37,7 +33,6 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
     fun getRandomQuote(header:Map<String,String>){
         showProcessingLoader()
-        quote.postValue(RandomQuote("John","Time is everything"))
        viewModelScope.launch(Dispatchers.IO) {
            retrofitRepository.randomQuote(header,randomQuoteListener)
        }
@@ -51,7 +46,7 @@ class HomeViewModel(application: Application) : BaseViewModel(application) {
 
         override fun onFailure(error: String) {
             hideProcessingLoader()
-            showToast(error)
+            showErrorDialog(error)
         }
 
     }

@@ -7,6 +7,7 @@ import com.example.levelup.baseClasses.BaseViewModel
 import com.example.levelup.interfaces.IResponse
 import com.example.levelup.models.SignedInUser
 import com.example.levelup.models.User
+import com.example.levelup.utils.LevelUpConstants
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
@@ -19,10 +20,21 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
 
     fun loginUser(){
+
+        if(email.value.isNullOrEmpty() || password.value.isNullOrEmpty() ){
+            showErrorDialog(LevelUpConstants.EMPTY_CREDENTAILS)
+            return
+        }
+
+        if(password.value!!.length < 6 ){
+            showErrorDialog(LevelUpConstants.PASSWORD_CREDENTIALS)
+            return
+        }
+
         showProcessingLoader()
         viewModelScope.launch(Dispatchers.IO) {
-            var user : User = User(email.value,password.value)
-           retrofitRepository.signInUser("application/json",user,signInListener)
+            val user : User = User(email.value,password.value)
+           retrofitRepository.signInUser(user,signInListener)
         }
 
     }
@@ -39,10 +51,13 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
         override fun onFailure(error: String) {
             hideProcessingLoader()
-            showToast(error)
+            showErrorDialog(error)
         }
 
     }
+
+
+
 
 
 }

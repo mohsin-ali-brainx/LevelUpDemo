@@ -8,12 +8,8 @@ import androidx.fragment.app.Fragment
 import com.example.levelup.R
 
 
-class Notifications : Fragment() {
+class NotificationsFragment : Fragment() {
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {

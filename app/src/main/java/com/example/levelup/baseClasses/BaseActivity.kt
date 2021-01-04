@@ -18,18 +18,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.asLiveData
 import com.example.levelup.LevelUpApplication
 import com.example.levelup.receivers.NetworkStateReciver
+import com.example.levelup.utils.ErrorDialog
 import com.example.levelup.utils.LevelUpConstants
 import com.example.levelup.utils.LevelUpProgress
+import com.example.levelup.utils.UpdatePasswordDialog
 
 @SuppressLint("Registered")
 open class BaseActivity:AppCompatActivity(),NetworkStateReciver.NetworkStateReceiverListener {
 
-    var lifecycleState = Lifecycle.Event.ON_ANY
+    private var lifecycleState = Lifecycle.Event.ON_ANY
     private var networkStateReceiver: NetworkStateReciver = NetworkStateReciver()
 
     override fun onCreate(savedInstanceState: Bundle?, persistentState: PersistableBundle?) {
         super.onCreate(savedInstanceState, persistentState)
-
+        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
     }
 
     override fun onResume() {
@@ -83,8 +85,8 @@ open class BaseActivity:AppCompatActivity(),NetworkStateReciver.NetworkStateRece
         }
     }
 
-    public val errorObserver = Observer<Any?> {
-        showToast(it)
+    val errorObserver = Observer<Any?> {
+        showErrorDialog(it)
     }
 
     fun showToast(message: Any?) {
@@ -97,9 +99,18 @@ open class BaseActivity:AppCompatActivity(),NetworkStateReciver.NetworkStateRece
         Toast.makeText(
             this,
             messageString,
-            //EtpUtils.removeExtraSpaces(messageString),
             Toast.LENGTH_SHORT
         ).show()
+    }
+
+    fun showErrorDialog(message: Any?){
+        val messageString = when (message) {
+            is String -> message
+            is Int -> getString(message)
+            else -> null
+        }
+        if (messageString.isNullOrEmpty()) return
+        ErrorDialog(messageString).show(supportFragmentManager, LevelUpConstants.ERROR_DIALOG_TAG)
     }
 
     override fun networkAvailable() {
@@ -110,17 +121,18 @@ open class BaseActivity:AppCompatActivity(),NetworkStateReciver.NetworkStateRece
         LevelUpApplication.isInternetConnected=false
     }
 
-    public fun authHeaders(listner: (HashMap<String,String>) -> Unit): HashMap<String, String> {
+    fun authHeaders(listner: (HashMap<String,String>) -> Unit): HashMap<String, String> {
         val headerMap: HashMap<String, String> = hashMapOf()
         val userMap = BaseViewModel.dataStoreRepository.getUserDetail.asLiveData().observe(this,{map->
-            headerMap["access-token"] = map.get(LevelUpConstants.ACCESS_TOKEN)!!
-            headerMap["uid"] = map.get(LevelUpConstants.UID)!!
-            headerMap["client"] = map.get(LevelUpConstants.CLIENT)!!
-            headerMap["content-type"] = "application/json"
+            headerMap["access-token"] = map[LevelUpConstants.ACCESS_TOKEN] ?: error("")
+            headerMap["uid"] = map[LevelUpConstants.UID] ?: error("")
+            headerMap["client"] = map[LevelUpConstants.CLIENT] ?: error("")
+            headerMap["content-type"] = LevelUpConstants.CONTENT_TYPE
             listner(headerMap)
 
         })
 
         return headerMap.filter { it.value.isNotEmpty() } as HashMap<String, String>
     }
+
 }

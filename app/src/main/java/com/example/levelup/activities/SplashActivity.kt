@@ -1,18 +1,16 @@
 package com.example.levelup.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import com.example.levelup.activityViewModels.SplashViewModel
 import com.example.levelup.baseClasses.BaseActivity
 import com.example.levelup.databinding.ActivitySplashBinding
+import com.example.levelup.extensions.startLevelUpActivity
 
-class Splash : BaseActivity() {
+class SplashActivity : BaseActivity() {
 
     private lateinit var viewBinding: ActivitySplashBinding
     private lateinit var viewmodel: SplashViewModel
-    //private var showOnBaording: Boolean = true
-   // private var isLoggedIn: Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +18,7 @@ class Splash : BaseActivity() {
         setSplashAnimation()
     }
 
-    fun setBinding() {
+    private fun setBinding() {
         viewmodel = ViewModelProvider(this).get(SplashViewModel::class.java)
         viewBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(viewBinding.root)
@@ -32,55 +30,34 @@ class Splash : BaseActivity() {
             this.alpha = 0f
             this.animate().setDuration(3000).alpha(1f).withEndAction {
                 moveToNewScreen()
-               // moveToOnBoarding()
             }
         }
     }
 
     private fun moveToNewScreen() {
 
-        viewmodel.readShowOnBoarding.observe(this, { showOnBaordingScreen ->
+        viewmodel.shouldShowOnBoardingScreen.observe(this, { showOnBaordingScreen ->
             if (showOnBaordingScreen == true) {
-                checkForLogedInUser()
+                checkUserSession()
             } else {
-                moveToOnBoarding()
+                startLevelUpActivity(activityClass=OnBoardingActivity::class.java,isFinish = true)
             }
         })
 
 
     }
 
-    private fun checkForLogedInUser() {
+    private fun checkUserSession() {
         viewmodel.isUserLoggedIn.observe(this, { isLoggedIn ->
             print(isLoggedIn)
             if (isLoggedIn == true)
-                moveToHome()
+               startLevelUpActivity(activityClass=MainMenuActivity::class.java,isFinish = true)
             else
-                moveToLogin()
+                startLevelUpActivity(activityClass=LoginActivity::class.java,isFinish = true)
         })
 
     }
 
-    private fun moveToHome() {
-        val intent = Intent(this, MainMenu::class.java)
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
-    }
-
-    private fun moveToLogin() {
-        val intent = Intent(this, Login::class.java)
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
-    }
-
-    private fun moveToOnBoarding() {
-        val intent = Intent(this, OnBoarding::class.java)
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out)
-        finish()
-    }
 
 
 }

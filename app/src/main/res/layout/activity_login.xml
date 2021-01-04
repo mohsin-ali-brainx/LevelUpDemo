@@ -5,22 +5,18 @@
 
     <data>
         <import type="com.example.levelup.activityViewModels.LoginViewModel"/>
-        <import type="com.example.levelup.activities.Login"/>
+        <import type="com.example.levelup.activities.LoginActivity"/>
 
         <variable
             name="viewModel"
             type="LoginViewModel" />
-
-        <variable
-            name="listnerHandler"
-            type="Login" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".activities.Login"
+        tools:context=".activities.LoginActivity"
         android:background="@color/white">
 
         <ImageView
@@ -109,16 +105,6 @@
                 android:textSize="@dimen/font_medium"
                 android:textColor="@color/black_text_color" />
 
-<!--            <ImageButton-->
-<!--                android:id="@+id/active_button"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginEnd="16dp"-->
-<!--                android:background="@color/white"-->
-<!--                android:src="@drawable/ic_eye"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
             <ToggleButton
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -130,7 +116,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:gravity="center"
-                android:onClick="@{listnerHandler::toggleEvent}"
+                android:onClick="toggleClicked"
                 />
 
 
@@ -176,55 +162,8 @@
             app:layout_constraintTop_toBottomOf="@id/tv_forgotPassword"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            android:onClick="@{listnerHandler::LoginClicked}"
+            android:onClick="loginClicked"
             />
-
-        <!--    <androidx.appcompat.widget.AppCompatEditText-->
-        <!--        android:id="@+id/et_Password"-->
-        <!--        android:hint="@string/password_hint"-->
-        <!--        android:background="@drawable/edit_text_white_round_shape"-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/et_Email"-->
-        <!--        android:layout_marginTop="@dimen/edit_text_margin_top_12"-->
-        <!--        android:layout_marginStart="@dimen/edit_text_margin_start"-->
-        <!--        android:layout_marginEnd="@dimen/edit_text_margin_end"-->
-        <!--        android:padding="@dimen/edit_text_padding"-->
-        <!--        android:inputType="textPassword"-->
-
-        <!--        />-->
-
-<!--            <com.google.android.material.textfield.TextInputLayout-->
-<!--                android:id="@+id/textInputLayout"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="@dimen/edit_text_view_height"-->
-<!--                android:layout_marginStart="@dimen/edit_text_margin_start"-->
-<!--                android:layout_marginEnd="@dimen/edit_text_margin_end"-->
-<!--                android:layout_marginBottom="76dp"-->
-<!--                app:boxBackgroundColor="#FFF"-->
-<!--                app:boxStrokeColor="#FFF"-->
-<!--                app:boxStrokeWidth="0dp"-->
-<!--                app:boxStrokeWidthFocused="0dp"-->
-<!--                app:hintEnabled="false"-->
-<!--                app:expandedHintEnabled="false"-->
-<!--                -->
-<!--                app:layout_constraintBottom_toTopOf="@+id/textView3"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:passwordToggleEnabled="true">-->
-
-<!--                <com.google.android.material.textfield.TextInputEditText-->
-<!--                    android:layout_width="match_parent"-->
-<!--                    android:layout_height="wrap_content"-->
-<!--                    android:text="dfsdfsfsdfs"-->
-<!--                    android:includeFontPadding="false"-->
-<!--                    android:background="@drawable/edit_text_white_round_shape"-->
-<!--                    android:ellipsize="start"-->
-<!--                    android:inputType="textPassword" />-->
-
-<!--            </com.google.android.material.textfield.TextInputLayout>-->
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

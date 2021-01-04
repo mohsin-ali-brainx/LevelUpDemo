@@ -11,7 +11,7 @@ data class RandomQuote(
         @Expose var text: String? = null
 ) : Serializable{
         fun autherParcelable():String{
-                return    "By ${author}"
+                return    "By $author"
         }
 
         fun quoteParcelable():String{

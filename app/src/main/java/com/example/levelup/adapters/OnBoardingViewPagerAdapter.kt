@@ -12,7 +12,6 @@ import com.example.levelup.models.OnBoardingModel
 class OnBoardingViewPagerAdapter( private val context: Context, private val onBoardingSlides:List<OnBoardingModel>) :
     RecyclerView.Adapter<OnBoardingViewPagerAdapter.OnBoardingViewHolder>()
 {
-    private val slides = onBoardingSlides
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OnBoardingViewHolder {
         val rootView = OnboardingItemBinding.inflate(LayoutInflater.from(context),parent,false)
@@ -20,13 +19,15 @@ class OnBoardingViewPagerAdapter( private val context: Context, private val onBo
     }
 
     override fun getItemCount(): Int {
-        return slides.size
+        return  onBoardingSlides.size
     }
 
     override fun onBindViewHolder(holder: OnBoardingViewHolder, position: Int) {
-       val slideItem = slides[position]
-        holder.itemBinding.setVariable(BR.slideItem,slideItem)
-        holder.itemBinding.executePendingBindings()
+       val slideItem =  onBoardingSlides[position]
+        holder.itemBinding.apply {
+            setVariable(BR.slideItem,slideItem)
+            executePendingBindings()
+        }
     }
 
     inner class OnBoardingViewHolder(val itemBinding: ViewDataBinding):RecyclerView.ViewHolder(itemBinding.root)

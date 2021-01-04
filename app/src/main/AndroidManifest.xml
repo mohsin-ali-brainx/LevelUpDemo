@@ -17,11 +17,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activities.MainMenu"></activity>
-        <activity android:name=".activities.UpdatePassword" />
-        <activity android:name=".activities.Login" />
-        <activity android:name=".activities.OnBoarding" />
-        <activity android:name=".activities.Splash">
+
+        <activity
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait"
+            android:name=".activities.LoginActivity" />
+        <activity
+            android:name=".activities.MainMenuActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.UpdatePasswordActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.LoginActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.OnBoardingActivity"
+            android:launchMode="singleTop"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".activities.SplashActivity"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

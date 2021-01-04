@@ -1,6 +1,5 @@
 package com.example.levelup.activities
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager2.widget.ViewPager2
@@ -9,8 +8,9 @@ import com.example.levelup.activityViewModels.OnBoardingViewModel
 import com.example.levelup.adapters.OnBoardingViewPagerAdapter
 import com.example.levelup.baseClasses.BaseActivity
 import com.example.levelup.databinding.ActivityOnBoardingBinding
+import com.example.levelup.extensions.startLevelUpActivity
 
-class OnBoarding : BaseActivity() {
+class OnBoardingActivity : BaseActivity() {
 
 
     private lateinit var viewmodel : OnBoardingViewModel
@@ -26,8 +26,7 @@ class OnBoarding : BaseActivity() {
 
     private fun settingButton() {
         binding.btnGetStarted.setOnClickListener {
-
-            moveToLogin()
+           startLevelUpActivity(activityClass=LoginActivity::class.java,isFinish = true)
         }
     }
 
@@ -61,11 +60,5 @@ class OnBoarding : BaseActivity() {
         })
     }
 
-    private fun moveToLogin() {
-        val intent = Intent(this,Login::class.java)
-        startActivity(intent)
-        overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out)
-        finish()
-    }
 
 }

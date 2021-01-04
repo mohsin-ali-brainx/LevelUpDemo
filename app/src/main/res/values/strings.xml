@@ -21,9 +21,15 @@
     <string name="notification">Notifications</string>
     <string name="logout_msg">Are you sure you want to logout?</string>
     <string name="cancel">Cancel</string>
+    <string name="ok">OK</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="applogo">AppLogo</string>
+    <string name="passwordicon">passwordIcon</string>
+    <string name="sponserimage">sponserImage</string>
+    <string name="navicon">navIcon</string>
+    <string name="slideimage">slideImage</string>
 
 
 </resources>

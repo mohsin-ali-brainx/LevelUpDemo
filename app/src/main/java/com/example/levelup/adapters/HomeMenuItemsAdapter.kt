@@ -12,7 +12,7 @@ import com.example.levelup.models.Menu
 class HomeMenuItemsAdapter ( private val context: Context, private val menuItems:List<Menu>) :
 RecyclerView.Adapter<HomeMenuItemsAdapter.MenuItemsViewHolder>() {
 
-    private val menuList = menuItems
+
 
     inner class MenuItemsViewHolder(val itemBinding: ViewDataBinding):RecyclerView.ViewHolder(itemBinding.root)
 
@@ -22,13 +22,15 @@ RecyclerView.Adapter<HomeMenuItemsAdapter.MenuItemsViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: MenuItemsViewHolder, position: Int) {
-        val menuItem = menuList[position]
-        holder.itemBinding.setVariable(BR.menu,menuItem)
-        holder.itemBinding.executePendingBindings()
+        val menuItem = menuItems[position]
+        holder.itemBinding.apply {
+            setVariable(BR.menu,menuItem)
+            executePendingBindings()
+        }
     }
 
     override fun getItemCount(): Int {
-       return menuList.size
+       return menuItems.size
     }
 
 

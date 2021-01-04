@@ -13,11 +13,12 @@ import com.example.levelup.utils.LevelUpUtils
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.bottom_nav_items.view.*
 
-class MainMenu : BaseActivity() {
+class MainMenuActivity : BaseActivity() {
 
     private lateinit var viewmodel : MainMenuViewModel
     private lateinit var binding:ActivityMainMenuBinding
     private lateinit var mainPagerAdapter: MainMenuPagerAdapter
+    private val owner = this@MainMenuActivity
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,7 +61,7 @@ class MainMenu : BaseActivity() {
             title?.setTextColor(resources.getColor(textColor))
             item_icon?.colorFilter =
                 LevelUpUtils.getFilterColor(
-                    this@MainMenu,
+                        owner,
                     iconColor
                 )
 
@@ -74,7 +75,7 @@ class MainMenu : BaseActivity() {
                 customView?.apply {
                     item_icon?.setImageResource( viewmodel.getTabIcons()[i])
                     title?.apply {
-                        setText(viewmodel.getTitleList()[i])
+                        text = viewmodel.getTitleList()[i]
                         setTypeface(this.typeface,Typeface.BOLD)
                     }
                 }
