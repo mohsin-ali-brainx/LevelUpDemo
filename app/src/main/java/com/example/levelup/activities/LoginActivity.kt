@@ -68,13 +68,12 @@ class LoginActivity : BaseActivity() {
     }
 
     fun loginClicked(view: View) {
-        if(LevelUpApplication.isInternetConnected) viewmodel.loginUser()
-        else showErrorDialog(LevelUpConstants.NO_INTERNET)
+        if(LevelUpApplication.isInternetConnected)
+            viewmodel.loginUser()
+        else
+            showErrorDialog(LevelUpConstants.NO_INTERNET)
     }
 
 
-    fun View.onToggle(view:View){
-
-    }
 
 }

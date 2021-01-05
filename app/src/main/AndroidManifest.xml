@@ -21,27 +21,34 @@
         <activity
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
-            android:name=".activities.LoginActivity" />
+            android:name=".activities.LoginActivity"
+            android:theme="@style/getStatedTheme"
+            />
         <activity
             android:name=".activities.MainMenuActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/getStatedTheme"
+            />
         <activity
             android:name=".activities.UpdatePasswordActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
-        <activity
-            android:name=".activities.LoginActivity"
-            android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/getStatedTheme"
+            />
+
         <activity
             android:name=".activities.OnBoardingActivity"
             android:launchMode="singleTop"
-            android:screenOrientation="portrait" />
+            android:screenOrientation="portrait"
+            android:theme="@style/getStatedTheme"
+            />
         <activity
             android:name=".activities.SplashActivity"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/getStatedTheme"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

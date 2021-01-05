@@ -15,8 +15,8 @@
     <color name="blue_text_color">#FF29304D</color>
     <color name="transparent">#00000000</color>
     <color name="background_fragment_color">#EFF2F9</color>
-    <color name="background_quote_color">#FF007AFF</color>
+    <color name="background_quote_color">#E6007AFF</color>
     <color name="light_grey_border_color">#F2F2F280</color>
-    <color name="black_text_color">#FF29304D</color>
+    <color name="black_text_color">#FF060606</color>
     <color name="progress_bg_color">#99000000</color>
 </resources>

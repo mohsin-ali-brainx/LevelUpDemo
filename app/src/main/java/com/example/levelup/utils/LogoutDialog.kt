@@ -1,57 +1,46 @@
 package com.example.levelup.utils
-
 import android.app.Dialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.Button
 import androidx.appcompat.app.AlertDialog
+import com.example.levelup.R
 import com.example.levelup.databinding.DialogLogoutBinding
-
+import kotlinx.android.synthetic.main.dialog_logout.*
+import kotlinx.android.synthetic.main.dialog_logout.view.*
 class LogoutDialog : LevelUpDialogUtils() {
-
     private val TAG = "MyCustomDialog"
-
     private lateinit var listner:LogoutDialogListner
-    private var binding:DialogLogoutBinding?=null
-
-    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-       binding = DialogLogoutBinding.inflate(LayoutInflater.from(context))
+    private lateinit var logoutDialogView:View
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        logoutDialogView =  inflater.inflate(R.layout.dialog_logout, container, false)
         clickEvents()
-        return AlertDialog.Builder(requireActivity())
-                .setView(binding!!.root)
-                .create()
-
+        return logoutDialogView
     }
-
     private fun clickEvents() {
-
-        binding?.btnCancel?.setOnClickListener{
+        logoutDialogView.findViewById<Button>(R.id.btn_cancel).setOnClickListener {
             listner.isLogoutClicked(false)
             dismiss()
         }
-        binding?.btnLogout?.setOnClickListener{
+        logoutDialogView.findViewById<Button>(R.id.btn_logout).setOnClickListener {
             listner.isLogoutClicked(true)
             dismiss()
         }
     }
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
             listner = targetFragment as LogoutDialogListner
-
         } catch (e: ClassCastException) {
             throw ClassCastException("Calling Fragment must implement LogoutListener")
         }
     }
-
     override fun onDestroyView() {
         super.onDestroyView()
-        binding = null
     }
-
     interface LogoutDialogListner{
         fun isLogoutClicked(isClicked: Boolean)
     }
-
-
 }

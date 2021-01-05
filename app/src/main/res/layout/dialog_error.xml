@@ -12,9 +12,12 @@
 
     <TextView
         android:id="@+id/tv_error_msg"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="@dimen/activity_margin_top_16"
+        android:layout_marginBottom="@dimen/activity_margin_top_16"
+        android:layout_marginStart="@dimen/activity_margin1_start"
+        android:layout_marginEnd="@dimen/activity_margin1_start"
         android:fontFamily="@font/avenirnextlpro_regular"
         android:text="@string/password_updated"
         android:textAlignment="center"

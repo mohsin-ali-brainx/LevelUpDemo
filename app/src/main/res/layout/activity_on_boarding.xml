@@ -8,6 +8,8 @@
     android:paddingVertical="@dimen/button_verticle_padding"
     tools:context=".activities.OnBoardingActivity">
 
+
+
     <androidx.viewpager2.widget.ViewPager2
         android:id="@+id/vp_onboarding"
         android:layout_width="match_parent"
@@ -15,28 +17,27 @@
         app:layout_constraintBottom_toTopOf="@+id/circularIndicator"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:orientation="horizontal"
+        />
 
-    <me.relex.circleindicator.CircleIndicator3
+
+    <io.github.vejei.viewpagerindicator.indicator.CircleIndicator
         android:id="@+id/circularIndicator"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
+
         android:layout_marginBottom="20dp"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        app:ci_animator="@animator/circle_indcator_alpha"
-        app:ci_drawable="@drawable/themecolor_circle"
-        app:ci_drawable_unselected="@drawable/unselected_circle"
-        app:ci_height="8dp"
-        app:ci_width="8dp"
-        app:ci_gravity="center"
-        app:ci_orientation="horizontal"
+        app:indicatorColor="@color/unselected_circle"
+        app:indicatorGap="8dp"
+        app:indicatorRadius="5dp"
+        app:indicatorSelectedColor="@color/theme_color"
         app:layout_constraintBottom_toTopOf="@+id/btn_getStarted"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/vp_onboarding" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+
 
     <Button
         android:id="@+id/btn_getStarted"

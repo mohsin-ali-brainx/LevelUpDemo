@@ -9,6 +9,7 @@ import com.example.levelup.adapters.OnBoardingViewPagerAdapter
 import com.example.levelup.baseClasses.BaseActivity
 import com.example.levelup.databinding.ActivityOnBoardingBinding
 import com.example.levelup.extensions.startLevelUpActivity
+import io.github.vejei.viewpagerindicator.indicator.CircleIndicator
 
 class OnBoardingActivity : BaseActivity() {
 
@@ -42,8 +43,13 @@ class OnBoardingActivity : BaseActivity() {
             adapter =OnBoardingViewPagerAdapter(LevelUpApplication.getTmContext(), viewmodel.getOnBoardingSlides())
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
         }
-        binding.vpOnboarding.adapter =OnBoardingViewPagerAdapter(LevelUpApplication.getTmContext(), viewmodel.getOnBoardingSlides())
-        binding.circularIndicator.setViewPager(binding.vpOnboarding)
+
+        binding.circularIndicator.apply {
+            setWithViewPager2(binding.vpOnboarding,false)
+            itemCount = viewmodel.getOnBoardingSlides().size
+            setAnimationMode(CircleIndicator.AnimationMode.SCALE);
+        }
+
         viewPagerOnScrollListener()
     }
 
@@ -59,6 +65,8 @@ class OnBoardingActivity : BaseActivity() {
             }
         })
     }
+
+
 
 
 }

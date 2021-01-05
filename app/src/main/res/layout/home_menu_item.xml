@@ -48,7 +48,6 @@
                 android:textSize="@dimen/font_medium"
                 android:textAlignment="textStart"
                 android:textColor="@color/black_text_color"
-                android:textStyle="bold"
                 android:layout_marginTop="@dimen/margin_8"
                 android:layout_marginBottom="@dimen/activity_vertical_bottom"
                 app:layout_constraintBottom_toBottomOf="parent"

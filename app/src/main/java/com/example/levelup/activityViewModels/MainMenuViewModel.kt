@@ -14,8 +14,7 @@ class MainMenuViewModel(application: Application): BaseViewModel(application) {
     private val tabTitles: MutableList<String> = mutableListOf()
     private val tabIcons: MutableList<Int> = mutableListOf()
 
-    var textColor:Int = R.color.black_text_color
-    private var iconColor:Int = R.color.theme_color
+
 
     init {
         fragmentList.add(HomeFragment())
@@ -31,15 +30,6 @@ class MainMenuViewModel(application: Application): BaseViewModel(application) {
         tabTitles.add(LevelUpConstants.BOTTOM_NAV_ITEM_SETTINGS)
     }
 
-    fun changeSelectedTabColor(){
-        textColor = R.color.black_text_color
-        iconColor = R.color.theme_color
-    }
-
-    fun changeUnSelectedTabColor(){
-        textColor = R.color.grey_text_color
-        iconColor = R.color.grey_text_color
-    }
 
     fun getFragmentList():MutableList<Fragment>{
         return this.fragmentList

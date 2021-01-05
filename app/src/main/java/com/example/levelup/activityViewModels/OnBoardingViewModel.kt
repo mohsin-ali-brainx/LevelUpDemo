@@ -10,22 +10,35 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
 
-class OnBoardingViewModel(application: Application): BaseViewModel(application) {
+class OnBoardingViewModel(application: Application) : BaseViewModel(application) {
 
-    private var onBoardingSlides : List<OnBoardingModel> = listOf(
-        OnBoardingModel(LevelUpConstants.ONBOARDING_SLIDE_TITLE_1, LevelUpConstants.ONBOARDING_SLIDE_DESC_1, R.drawable.ic_slide_1),
-        OnBoardingModel(LevelUpConstants.ONBOARDING_SLIDE_TITLE_1,LevelUpConstants.ONBOARDING_SLIDE_DESC_1,R.drawable.ic_slide_2),
-        OnBoardingModel(LevelUpConstants.ONBOARDING_SLIDE_TITLE_1,LevelUpConstants.ONBOARDING_SLIDE_DESC_1,R.drawable.ic_slide_1)
+    private var onBoardingSlides: List<OnBoardingModel> = listOf(
+        OnBoardingModel(
+            LevelUpConstants.ONBOARDING_SLIDE_TITLE_1,
+            LevelUpConstants.ONBOARDING_SLIDE_DESC_1,
+            R.drawable.onbaording_slide_1
+        ),
+        OnBoardingModel(
+            LevelUpConstants.ONBOARDING_SLIDE_TITLE_2,
+            LevelUpConstants.ONBOARDING_SLIDE_DESC_2,
+            R.drawable.onbaording_slide_2
+        ),
+        OnBoardingModel(
+            LevelUpConstants.ONBOARDING_SLIDE_TITLE_3,
+            LevelUpConstants.ONBOARDING_SLIDE_DESC_3,
+            R.drawable.onbaording_slide_3
+        )
     )
 
-    fun stopOnboardingScreen(){
+    fun stopOnboardingScreen() {
         viewModelScope.launch(Dispatchers.IO) {
-           dataStoreRepository.stopShowingOnboardingScreen()
+            dataStoreRepository.stopShowingOnboardingScreen()
         }
     }
 
-    fun  getOnBoardingSlides(): List<OnBoardingModel> {
+    fun getOnBoardingSlides(): List<OnBoardingModel> {
         return onBoardingSlides
     }
+
 
 }

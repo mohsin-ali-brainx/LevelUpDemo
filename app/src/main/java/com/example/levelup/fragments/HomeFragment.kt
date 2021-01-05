@@ -22,18 +22,23 @@ class HomeFragment : BaseFragment() {
     private lateinit var requiredActivity: MainMenuActivity
 
     override fun onCreateView(
-            inflater: LayoutInflater, container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
 
         requiredActivity = requireActivity() as MainMenuActivity
         binding = FragmentHomeBinding.inflate(inflater, container, false)
         viewmodel = ViewModelProviders.of(this)
-                .get(HomeViewModel::class.java)
+            .get(HomeViewModel::class.java)
         binding?.menuRecyclerView?.adapter
         setViewModelObserver()
         setBinding()
+        quoteObserver()
         return binding!!.root
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
     }
 
     private fun setViewModelObserver() {
@@ -49,38 +54,37 @@ class HomeFragment : BaseFragment() {
             adapter = HomeMenuItemsAdapter(LevelUpApplication.getTmContext(), viewmodel.getMenuList())
             layoutManager = manager
         }
-        getRandomQuote()
         setUserName()
-
+        getRandomQuote()
     }
 
     private fun setUserName() {
         viewmodel.readUserDetails.observe(requiredActivity, {
-            binding?.tvUsername?.text = it.get(LevelUpConstants.USERNAME)
+            val firstName = it[LevelUpConstants.USERNAME]?.split(" ")?.get(0)
+            binding?.tvUsername?.text = firstName
         })
     }
 
     private fun getRandomQuote() {
-        if(LevelUpApplication.isInternetConnected) {
             requiredActivity.authHeaders {
                 viewmodel.getRandomQuote(it)
             }
-            viewmodel.quote.observe(requiredActivity,{
-                binding?.apply {
-                    tvQuote.text = it.text
-                    tvAuthor.text = "".getAuthor(it.author)
-                }
-            })
-        }else{
-            LevelUpConstants.NO_INTERNET.errorDialog()
-        }
+    }
 
+    fun quoteObserver(){
+        viewmodel.quote.observe(requiredActivity,{
+            binding?.apply {
+                tvQuote.text = it.text
+                tvAuthor.text = "".getAuthor(it.author)
+            }
+        })
     }
 
 
     override fun onDestroy() {
         super.onDestroy()
         binding = null
+
     }
 
 

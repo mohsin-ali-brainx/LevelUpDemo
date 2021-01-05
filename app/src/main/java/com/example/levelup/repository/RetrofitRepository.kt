@@ -14,7 +14,9 @@ class RetrofitRepository{
         val response =apiService.randomQuote(header)
         if (response.isSuccessful){
             if (response.body()!=null){
-                listener.onSuccess(response.body()!!)
+                response.body()?.let {
+                    listener.onSuccess(it)
+                }
             }
             else {
                 listener.onFailure(LevelUpConstants.EMPTY_BODY)
@@ -34,7 +36,9 @@ class RetrofitRepository{
                     client = response.headers().get("client")
                     access_token = response.headers().get("access-token")
                 }
-                listener.onSuccess(logedInUser!!)
+                logedInUser?.let {
+                    listener.onSuccess(it)
+                }
             }
             else {
                 listener.onFailure(LevelUpConstants.EMPTY_BODY)
@@ -50,7 +54,9 @@ class RetrofitRepository{
         if (response.isSuccessful){
             if (response.body()!=null){
                 val updatePassword = response.body()
-                listener.onSuccess(updatePassword!!)
+                updatePassword?.let {
+                    listener.onSuccess(it)
+                }
             }
             else {
                 listener.onFailure(LevelUpConstants.EMPTY_BODY)
@@ -67,8 +73,10 @@ class RetrofitRepository{
         )
         if (response.isSuccessful){
             if (response.body()!=null){
-                val updatePassword = response.body()
-                listener.onSuccess(updatePassword!!)
+                val userLoggedOut = response.body()
+                userLoggedOut?.let {
+                    listener.onSuccess(it)
+                }
             }
             else {
                 listener.onFailure(LevelUpConstants.EMPTY_BODY)

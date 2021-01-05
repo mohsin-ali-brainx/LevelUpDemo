@@ -11,7 +11,7 @@ android {
 
     defaultConfig {
         applicationId "com.example.levelup"
-        minSdkVersion 26
+        minSdkVersion 21
         targetSdkVersion 30
         versionCode 1
         versionName "1.0"
@@ -97,6 +97,7 @@ dependencies {
 
     // Progress Dialog
     implementation 'com.kaopiz:kprogresshud:1.2.0'
+    implementation 'io.github.vejei.viewpagerindicator:viewpagerindicator:1.0.0-alpha.1'
 
 
 

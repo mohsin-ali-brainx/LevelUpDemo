@@ -1,6 +1,7 @@
 package com.example.levelup.activities
 
 import android.graphics.Typeface
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.ViewModelProvider
@@ -40,6 +41,7 @@ class MainMenuActivity : BaseActivity() {
         mainPagerAdapter = MainMenuPagerAdapter(supportFragmentManager)
         mainPagerAdapter.apply {
             addFragments(viewmodel.getFragmentList())
+
             binding.viewPager.adapter = this
             binding.tabLayout.setupWithViewPager(binding.viewPager)
         }
@@ -73,6 +75,8 @@ class MainMenuActivity : BaseActivity() {
             binding.tabLayout.getTabAt(i)?.apply {
                 setCustomView(R.layout.bottom_nav_items)
                 customView?.apply {
+                    if(i==1) ic_badge.visibility = View.VISIBLE
+                    else ic_badge.visibility = View.GONE
                     item_icon?.setImageResource( viewmodel.getTabIcons()[i])
                     title?.apply {
                         text = viewmodel.getTitleList()[i]

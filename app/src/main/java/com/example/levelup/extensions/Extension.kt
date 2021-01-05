@@ -36,5 +36,5 @@ fun String.isValid(pattern: String?): Boolean {
 
 
 fun String.getAuthor(author:String?):String{
-    return "By {$author}"
+    return "By $author"
 }
