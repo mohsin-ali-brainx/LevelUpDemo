@@ -36,8 +36,8 @@ class SplashActivity : BaseActivity() {
 
     private fun moveToNewScreen() {
 
-        viewmodel.shouldShowOnBoardingScreen.observe(this, { showOnBaordingScreen ->
-            if (showOnBaordingScreen == true) {
+        viewmodel.shouldShowOnBoardingScreen.observe(this, { showOnBoardingScreen ->
+            if (showOnBoardingScreen == true) {
                 checkUserSession()
             } else {
                 startLevelUpActivity(activityClass=OnBoardingActivity::class.java,isFinish = true)

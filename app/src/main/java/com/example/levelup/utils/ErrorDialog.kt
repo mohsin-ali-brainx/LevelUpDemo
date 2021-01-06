@@ -9,16 +9,16 @@ import com.example.levelup.R
 import kotlinx.android.synthetic.main.dialog_error.view.*
 import java.util.concurrent.TimeUnit
 
-class ErrorDialog(val error_msg:String):LevelUpDialogUtils() {
+class ErrorDialog(private val error_msg:String):LevelUpDialogUtils() {
 
-    private lateinit var diloagView: View
-    private lateinit var countdownTimer: CountDownTimer
+    private lateinit var dialogView: View
+    private lateinit var countDownTimer: CountDownTimer
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        diloagView =  inflater.inflate(R.layout.dialog_error, container, false)
-        diloagView.tv_error_msg.text = error_msg
+        dialogView =  inflater.inflate(R.layout.dialog_error, container, false)
+        dialogView.tv_error_msg.text = error_msg
 
-        return diloagView
+        return dialogView
     }
 
     override fun onStart() {
@@ -28,7 +28,7 @@ class ErrorDialog(val error_msg:String):LevelUpDialogUtils() {
 
     private fun startTimer() {
         val duration:Long = TimeUnit.SECONDS.toMillis(3)
-        countdownTimer = object : CountDownTimer(duration, 1000) {
+        countDownTimer = object : CountDownTimer(duration, 1000) {
             override fun onFinish() {
                 dismiss()
             }
@@ -36,7 +36,7 @@ class ErrorDialog(val error_msg:String):LevelUpDialogUtils() {
 
             }
         }
-        countdownTimer.start()
+        countDownTimer.start()
     }
 
 

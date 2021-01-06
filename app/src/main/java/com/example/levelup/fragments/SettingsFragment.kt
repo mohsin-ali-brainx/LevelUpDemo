@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.levelup.LevelUpApplication
 import com.example.levelup.activities.LoginActivity
@@ -16,7 +15,6 @@ import com.example.levelup.extensions.startLevelUpActivity
 import com.example.levelup.fragmentViewModels.SettingsViewModel
 import com.example.levelup.utils.LevelUpConstants
 import com.example.levelup.utils.LogoutDialog
-import com.example.levelup.utils.Status
 
 
 class SettingsFragment : BaseFragment(),LogoutDialog.LogoutDialogListner {

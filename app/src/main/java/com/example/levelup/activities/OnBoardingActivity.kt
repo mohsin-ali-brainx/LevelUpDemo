@@ -14,8 +14,8 @@ import io.github.vejei.viewpagerindicator.indicator.CircleIndicator
 class OnBoardingActivity : BaseActivity() {
 
 
-    private lateinit var viewmodel : OnBoardingViewModel
-    private lateinit var binding:ActivityOnBoardingBinding
+    private lateinit var viewmodel: OnBoardingViewModel
+    private lateinit var binding: ActivityOnBoardingBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,46 +27,49 @@ class OnBoardingActivity : BaseActivity() {
 
     private fun settingButton() {
         binding.btnGetStarted.setOnClickListener {
-           startLevelUpActivity(activityClass=LoginActivity::class.java,isFinish = true)
+            startLevelUpActivity(activityClass = LoginActivity::class.java, isFinish = true)
         }
     }
 
     private fun setBinding() {
         viewmodel = ViewModelProvider(this).get(OnBoardingViewModel::class.java)
-        binding= ActivityOnBoardingBinding.inflate(layoutInflater)
+        binding = ActivityOnBoardingBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
     }
 
     private fun settingViewPager() {
         binding.vpOnboarding.apply {
-            adapter =OnBoardingViewPagerAdapter(LevelUpApplication.getTmContext(), viewmodel.getOnBoardingSlides())
+            adapter = OnBoardingViewPagerAdapter(
+                LevelUpApplication.getTmContext(),
+                viewmodel.getOnBoardingSlides()
+            )
             orientation = ViewPager2.ORIENTATION_HORIZONTAL
         }
 
         binding.circularIndicator.apply {
-            setWithViewPager2(binding.vpOnboarding,false)
+            setWithViewPager2(binding.vpOnboarding, false)
             itemCount = viewmodel.getOnBoardingSlides().size
-            setAnimationMode(CircleIndicator.AnimationMode.SCALE);
+            setAnimationMode(CircleIndicator.AnimationMode.SCALE)
         }
+
 
         viewPagerOnScrollListener()
     }
 
     private fun viewPagerOnScrollListener() {
-        binding.vpOnboarding.registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback(){
+        binding.vpOnboarding.registerOnPageChangeCallback(object :
+            ViewPager2.OnPageChangeCallback() {
             override fun onPageScrolled(
                 position: Int,
                 positionOffset: Float,
                 positionOffsetPixels: Int
             ) {
-                if (position==2)
-                super.onPageScrolled(position, positionOffset, positionOffsetPixels)
+                if (position == 2)
+                    super.onPageScrolled(position, positionOffset, positionOffsetPixels)
             }
         })
     }
-
-
 
 
 }

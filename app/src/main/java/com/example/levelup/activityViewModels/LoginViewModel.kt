@@ -33,7 +33,7 @@ class LoginViewModel(application: Application) : BaseViewModel(application) {
 
         showProcessingLoader()
         viewModelScope.launch(Dispatchers.IO) {
-            val user : User = User(email.value,password.value)
+            val user = User(email.value,password.value)
            retrofitRepository.signInUser(user,signInListener)
         }
 

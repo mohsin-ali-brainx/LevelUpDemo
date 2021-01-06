@@ -27,7 +27,6 @@ class UpdatePasswordActivity : BaseActivity(),UpdatePasswordDialog.UpdatePasswor
         viewmodel = ViewModelProvider(this).get(UpdatePasswordViewModel::class.java)
         binding = ActivityUpdatePasswordBinding.inflate(layoutInflater)
         binding.apply {
-            listnerHandler = this@UpdatePasswordActivity
             viewModel = viewmodel
         }
         setContentView(binding.root)
@@ -38,16 +37,7 @@ class UpdatePasswordActivity : BaseActivity(),UpdatePasswordDialog.UpdatePasswor
 
     }
 
-    fun UpdateClicked(view: View) {
-        if(LevelUpApplication.isInternetConnected) {
-            authHeaders {
-                viewmodel.updateUserPassword(it)
-            }
-        }
-        else{
-            showErrorDialog(LevelUpConstants.NO_INTERNET)
-        }
-    }
+
 
     private fun updatePasswordObserver(){
         viewmodel.passwordUpdated.observe(this,{
@@ -59,6 +49,17 @@ class UpdatePasswordActivity : BaseActivity(),UpdatePasswordDialog.UpdatePasswor
     override fun isUpdated(updated: Boolean) {
         if (updated){
             startLevelUpActivity(activityClass=MainMenuActivity::class.java,isFinish = true)
+        }
+    }
+
+    fun updatePasswordClicked(view: View) {
+        if(LevelUpApplication.isInternetConnected) {
+            authHeaders {
+                viewmodel.updateUserPassword(it)
+            }
+        }
+        else{
+            showErrorDialog(LevelUpConstants.NO_INTERNET)
         }
     }
 

@@ -16,6 +16,7 @@ class LoginActivity : BaseActivity() {
 
     private lateinit var viewmodel: LoginViewModel
     private lateinit var binding: ActivityLoginBinding
+    private val owner = this@LoginActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +25,7 @@ class LoginActivity : BaseActivity() {
     }
 
     private fun setBinding() {
-        viewmodel = ViewModelProvider(this).get(LoginViewModel::class.java)
+        viewmodel = ViewModelProvider(owner).get(LoginViewModel::class.java)
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
 
@@ -37,30 +38,37 @@ class LoginActivity : BaseActivity() {
 
     private fun setViewModelObserver() {
         viewmodel.apply {
-            isLoading.observe( this@LoginActivity,loadingObserver)
-            errorMessageObserver.observe( this@LoginActivity,errorObserver)
+            isLoading.observe(owner, loadingObserver)
+            errorMessageObserver.observe(owner, errorObserver)
         }
     }
 
     private fun setObservables() {
-        viewmodel.logedInUser.observe(this,{user->
-            when(user.first_login){
-                true->  startLevelUpActivity(activityClass=UpdatePasswordActivity::class.java,isFinish = true)
-                false-> startLevelUpActivity(activityClass=MainMenuActivity::class.java,isFinish = true)
+        viewmodel.logedInUser.observe(this, { user ->
+            when (user.first_login) {
+                true -> startLevelUpActivity(
+                    activityClass = UpdatePasswordActivity::class.java,
+                    isFinish = true
+                )
+                false -> startLevelUpActivity(
+                    activityClass = MainMenuActivity::class.java,
+                    isFinish = true
+                )
             }
         })
     }
 
     fun toggleClicked(v: View) {
 
-        when(viewmodel.showPassword){
-            true->{
+        when (viewmodel.showPassword) {
+            true -> {
                 viewmodel.showPassword = false
                 binding.etPassword.transformationMethod = PasswordTransformationMethod.getInstance()
             }
-            false->{
+            false -> {
                 viewmodel.showPassword = true
-                binding.etPassword.transformationMethod = HideReturnsTransformationMethod.getInstance()
+                binding.etPassword.transformationMethod =
+                    HideReturnsTransformationMethod.getInstance()
             }
         }
         binding.etPassword.setSelection(binding.etPassword.text!!.length)
@@ -68,12 +76,11 @@ class LoginActivity : BaseActivity() {
     }
 
     fun loginClicked(view: View) {
-        if(LevelUpApplication.isInternetConnected)
+        if (LevelUpApplication.isInternetConnected)
             viewmodel.loginUser()
         else
             showErrorDialog(LevelUpConstants.NO_INTERNET)
     }
-
 
 
 }

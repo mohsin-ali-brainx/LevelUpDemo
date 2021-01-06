@@ -10,7 +10,7 @@ open class LevelUpDialogUtils : DialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        dialog?.apply { getWindow()?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) }
+        dialog?.apply { window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT)) }
     }
 
 }

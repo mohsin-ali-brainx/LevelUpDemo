@@ -37,10 +37,6 @@ class HomeFragment : BaseFragment() {
         return binding!!.root
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     private fun setViewModelObserver() {
         viewmodel.apply {
             isLoading.observe(requiredActivity,getLoadingObserver())
@@ -71,7 +67,7 @@ class HomeFragment : BaseFragment() {
             }
     }
 
-    fun quoteObserver(){
+    private fun quoteObserver(){
         viewmodel.quote.observe(requiredActivity,{
             binding?.apply {
                 tvQuote.text = it.text

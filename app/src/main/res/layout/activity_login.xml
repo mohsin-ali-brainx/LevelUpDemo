@@ -27,7 +27,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/ic_levelup_logo" />
+            app:srcCompat="@drawable/ic_levelup_logo"
+            android:contentDescription="@string/applogo" />
 
         <TextView
             android:id="@+id/text_view_title"
@@ -52,7 +53,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:srcCompat="@drawable/ic_sponser" />
+            app:srcCompat="@drawable/ic_sponser"
+            android:contentDescription="@string/applogo" />
 
 
         <androidx.appcompat.widget.AppCompatEditText

@@ -29,7 +29,7 @@ class UpdatePasswordViewModel (application: Application) : BaseViewModel(applica
         }
 
             showProcessingLoader()
-            val user: User = User(null,password.value!!,confirmPassword.value!!)
+            val user = User(null,password.value!!,confirmPassword.value!!)
             viewModelScope.launch(Dispatchers.IO) {
                 retrofitRepository.updatePassword(header,user,updatePasswordListener)
             }
